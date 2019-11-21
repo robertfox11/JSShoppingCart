@@ -32,11 +32,11 @@ for (datos of baseDeDatos) {
     let miNodoPrecio = document.createElement('span');
     miNodoPrecio.textContent = datos.precio + '€';
 
-    let miBtn = document.createElement('button');
-    miBtn.classList.add('btn', 'btn-primary')
+    let miBtn = document.createElement('a');
+    miBtn.classList.add('btn', 'btn-primary', 'agregar_carrito')
     miBtn.textContent = 'Comprar';
     miBtn.setAttribute('marcador', datos['id']);
-    miBtn.addEventListener('click', anadir);
+    // miBtn.addEventListener('click', anadir);
 
     item.appendChild(miNodo);
     miNodo.appendChild(miNodoCardDeck);

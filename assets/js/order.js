@@ -7,5 +7,8 @@ const lista_carrito = document.querySelector('#lista-carrito tbody');
 cargarEventos();
 
 function cargarEventos() {
-    productos.addEventListener('click', (e) => { carro.tobuyProducts(e) });
+    productos.addEventListener('click', (e) => {
+        carro.tobuyProducts(e)
+
+    });
 }
