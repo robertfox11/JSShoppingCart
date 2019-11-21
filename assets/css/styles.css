@@ -8,6 +8,14 @@
     border-top-right-radius: calc(.25rem - 1px);
 }
 
+.nav-link {
+    cursor: pointer;
+}
+
 body {
     background: honeydew;
+}
+
+a:hover {
+    cursor: pointer;
 }
