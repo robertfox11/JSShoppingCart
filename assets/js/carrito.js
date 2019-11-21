@@ -16,7 +16,7 @@ class Cart {
                 imagen: productos.querySelector('img').src,
                 marca: productos.querySelector('h4').textContent,
                 precio: productos.querySelector('.precio span').textContent,
-                id: productos.querySelector('a').getAttribute('datos-id'),
+                id: productos.querySelector('a').getAttribute('marcador'),
                 cantidad: 1
             }
             //insertamos el valor en el carrito
@@ -35,7 +35,23 @@ class Cart {
         <a href = "#" class= "borrar-producto fas fa-times-circle" data-id="${productos.id}"></a>
     </td>
     `;
-        lista_carrito.appendChild(row);
+        lista_productos.appendChild(row);
         console.log(row);
+    }
+    eliminarProducto(e) {
+        e.preventDefault();
+        let producto, productoID;
+        if (e.target.classList.contains('borrarProducto')) {
+            producto = e.target.parentElement.parentElement.remove();
+            productoID = producto.querySelector('a').getAttribute('marcador');
+            console.log(producto)
+        }
+    }
+    vaciarCarrito(e) {
+        e.preventDefault();
+        while (lista_productos.firstChild) {
+            lista_productos.removeChild(lista_productos.firstChild);
+        }
+        return false;
     }
 }
