@@ -1,5 +1,9 @@
+* {
+    border: 1px solid red;
+}
+
 .card-img-top {
-    width: 20%;
+    width: 40%;
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px);
 }

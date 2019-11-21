@@ -1,33 +1,66 @@
 var baseDeDatos = [{
         id: 1,
-        marca: 'ZapatoCheck',
+        marca: 'Timberland',
         nombre: 'Casual',
-        img: 'assets/img/carro.png',
+        img: 'assets/img/zapatos/zapacasualTimberland.png',
         precio: 500,
 
     },
     {
         id: 2,
-        marca: 'Zapatillas',
-        nombre: 'Deportiva',
+        marca: 'Timberland',
+        nombre: 'Casual',
+        img: 'assets/img/zapatos/zapacasualTimberland1.png',
         precio: 2000
     },
     {
         id: 3,
-        marca: 'Zona',
-        nombre: 'ThinkPadX1',
+        marca: 'Timberland',
+        nombre: 'casual',
+        img: 'assets/img/zapatos/zapacasualTimberland.png',
         precio: 1000
     },
     {
         id: 4,
-        marca: 'Zico',
-        nombre: 'Predator',
+        marca: 'Nike',
+        nombre: 'Air',
+        img: 'assets/img/zapatos/zapadeporNike.png',
         precio: 500
     },
     {
         id: 5,
-        marca: 'Escot',
+        marca: 'New Balance',
         nombre: 'Fast',
+        img: 'assets/img/zapatos/zapadeporNew.png',
+        precio: 800
+    },
+    {
+        id: 5,
+        marca: 'Adidas',
+        nombre: 'Predator',
+        img: 'assets/img/zapatos/zapadeporAdidas.png',
+        precio: 800
+    },
+    {
+        id: 5,
+        marca: 'DhGate Alpinismo',
+        nombre: 'Montaña',
+        img: 'assets/img/zapatos/zapaAlpinismoDhgate.png',
+        precio: 800
+    },
+    {
+        id: 5,
+        marca: 'DhGate Alpinismo',
+        nombre: 'Senderismo',
+        img: 'assets/img/zapatos/zapaAlpinismoDhgate2.png',
+        precio: 800
+    },
+    {
+        id: 5,
+        marca: 'DhGate Alpinismo',
+        nombre: 'Escalada Grampons',
+        img: 'assets/img/zapatos/zapaAlpinismoDhgate1.png',
         precio: 800
     }
+
 ];
