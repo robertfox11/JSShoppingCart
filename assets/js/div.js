@@ -9,7 +9,7 @@ for (datos of baseDeDatos) {
     miNodo.classList.add('mb-4', 'card-desk', 'col-md-4', 'text-center');
 
     let miNodoCardDeck = document.createElement('div');
-    miNodoCardDeck.classList.add('mb-1');
+    miNodoCardDeck.classList.add('mb-1', 'card', 'shadow-sm');
 
     let miNodoCardHeader = document.createElement('div');
     miNodoCardHeader.classList.add('card-header');
@@ -25,8 +25,13 @@ for (datos of baseDeDatos) {
     miNodoImg.classList.add('card-img-top');
     miNodoImg.src = datos.img;
 
+    let miNodoStock = document.createElement('span');
+    miNodoStock.classList.add('card-title', 'mx-auto', 'stock');
+    miNodoStock.textContent = datos.stock + " unidades ";
+
+
     let miNodoH = document.createElement('h1');
-    miNodoH.classList.add('card-title', 'pricing-card-title', 'precio');
+    miNodoH.classList.add('precio');
     miNodoH.textContent = "S/. ";
 
     let miNodoPrecio = document.createElement('span');
@@ -35,7 +40,7 @@ for (datos of baseDeDatos) {
     let miBtn = document.createElement('a');
     miBtn.classList.add('btn', 'btn-primary', 'agregar_carrito')
     miBtn.textContent = 'Comprar';
-    miBtn.setAttribute('data', datos.id);
+    miBtn.setAttribute('data-id', datos.id);
     // miBtn.addEventListener('click', anadir);
 
     item.appendChild(miNodo);
@@ -45,6 +50,7 @@ for (datos of baseDeDatos) {
     miNodoCardDeck.appendChild(miNodoBody);
     miNodoBody.appendChild(miNodoImg);
     miNodoBody.appendChild(miNodoH);
+    miNodoBody.appendChild(miNodoStock);
     miNodoH.appendChild(miNodoPrecio);
     miNodoBody.appendChild(miBtn);
     // miNodoTitle.appendChild(miNodoTitle);

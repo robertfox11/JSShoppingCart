@@ -16,11 +16,12 @@ class Cart {
                 imagen: productos.querySelector('img').src,
                 marca: productos.querySelector('h4').textContent,
                 precio: productos.querySelector('.precio span').textContent,
-                id: productos.querySelector('a').getAttribute('marcador'),
+                id: productos.querySelector('a').getAttribute('data-id'),
                 cantidad: 1
             }
             //insertamos el valor en el carrito
         this.insertarCarrito(infoProducto);
+        console.log(infoProducto);
     }
     insertarCarrito(productos) {
         //recibimos un valor del producto
@@ -31,8 +32,9 @@ class Cart {
     </td>
     <td>${productos.marca}</td>
     <td>${productos.precio}</td>
+    <td>${productos.stock}</td>
     <td>
-        <a href = "#" class= "borrar-producto fas fa-times-circle" data-id="${productos.id}"></a>
+        <a href = "#" class= "borrar_producto fas fa-times-circle" data-id="${productos.id}"></a>
     </td>
     `;
         lista_productos.appendChild(row);
