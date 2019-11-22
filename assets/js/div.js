@@ -40,7 +40,7 @@ for (datos of baseDeDatos) {
     let miBtn = document.createElement('a');
     miBtn.classList.add('btn', 'btn-primary', 'agregar_carrito')
     miBtn.textContent = 'Comprar';
-    miBtn.setAttribute('data-id', datos.id);
+    // miBtn.setAttribute('data-id', datos.id);
     // miBtn.addEventListener('click', anadir);
 
     item.appendChild(miNodo);

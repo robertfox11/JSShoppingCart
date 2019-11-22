@@ -1,7 +1,7 @@
 var baseDeDatos = [{
         id: 1,
         marca: 'Timberland',
-        nombre: 'Casual',
+        nombre: 'Casual Marron',
         img: 'assets/img/zapatos/zapacasualTimberland.png',
         precio: 500,
         stock: 2
@@ -10,7 +10,7 @@ var baseDeDatos = [{
     {
         id: 2,
         marca: 'Timberland',
-        nombre: 'Casual',
+        nombre: 'Casual blue',
         img: 'assets/img/zapatos/zapacasualTimberland1.png',
         precio: 2000,
         stock: 10
@@ -18,7 +18,7 @@ var baseDeDatos = [{
     {
         id: 3,
         marca: 'Timberland',
-        nombre: 'casual',
+        nombre: 'Casual Marron',
         img: 'assets/img/zapatos/zapacasualTimberland.png',
         precio: 1000,
         stock: 10
