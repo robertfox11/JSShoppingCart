@@ -21,6 +21,7 @@ class Cart {
             }
             //insertamos el valor en el carrito
         this.insertarCarrito(infoProducto);
+
         // console.log(infoProducto);
     }
     insertarCarrito(producto) {
@@ -37,23 +38,44 @@ class Cart {
         </td>
         `;
         lista_productos.appendChild(row);
-        console.log(row);
+        this.guardarProductoLocalStorage(producto);
+        // console.log(row);
     }
     eliminarProducto(e) {
         //eliminamos producto
         e.preventDefault();
         let producto, productoID;
         if (e.target.classList.contains('borrar_producto')) {
-            producto = e.target.parentElement.parentElement.remove();
+            e.target.parentElement.parentElement.remove();
+            producto = e.target.parentElement.parentElement;
             productoID = producto.querySelector('a').getAttribute('data-id');
             console.log(producto);
         }
     }
     vaciarCarrito(e) {
-        e.preventDefault();
-        while (lista_productos.firstChild) {
-            lista_productos.removeChild(lista_productos.firstChild);
+            e.preventDefault();
+            while (lista_productos.firstChild) {
+                lista_productos.removeChild(lista_productos.firstChild);
+            }
+            return false;
         }
-        return false;
+        //Guardamos los datos local Storage
+    guardarProductoLocalStorage(producto) {
+            let productos;
+            productos = this.obtenerDatosLocalStorage();
+            productos.push(producto);
+            localStorage.setItem('productos', JSON.stringify(productos));
+
+        }
+        //obtenemos los datos
+    obtenerDatosLocalStorage() {
+        let productoLS;
+        if (localStorage.getItem('productos') === null) {
+            productoLS = [];
+
+        } else {
+            productoLS = JSON.parse(localStorage.getItem('productos'));
+        }
+        return productoLS;
     }
 }

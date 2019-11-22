@@ -1,5 +1,5 @@
 var baseDeDatos = [{
-        id: 1,
+        // id: 1,
         marca: 'Timberland',
         nombre: 'Casual Marron',
         img: 'assets/img/zapatos/zapacasualTimberland.png',
