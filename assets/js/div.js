@@ -27,7 +27,12 @@ for (datos of baseDeDatos) {
 
     let miNodoStock = document.createElement('span');
     miNodoStock.classList.add('card-title', 'mx-auto', 'stock');
-    miNodoStock.textContent = datos.stock + " unidades ";
+    miNodoStock.textContent = datos.stock + " uni ";
+
+    // let miNodoUni = document.createElement('span');
+    // miNodoUni.classList.add('card-title', 'mx-auto', 'ids');
+    // miNodoUni.textContent = " id " + datos.id;
+    // miNodoUni.setAttribute('id', datos.id);
 
 
     let miNodoH = document.createElement('h1');
@@ -40,7 +45,14 @@ for (datos of baseDeDatos) {
     let miBtn = document.createElement('a');
     miBtn.classList.add('btn', 'btn-primary', 'agregar_carrito')
     miBtn.textContent = 'Comprar';
-    // miBtn.setAttribute('data-id', datos.id);
+    miBtn.setAttribute('data-id', datos.id);
+
+    let miNodoUl = document.createElement('ul');
+    miNodoUl.classList.add('list-unstyled', 'mt-3', 'mb-4');
+
+    let miNodoLi = document.createElement('li');
+
+
     // miBtn.addEventListener('click', anadir);
 
     item.appendChild(miNodo);
@@ -51,6 +63,8 @@ for (datos of baseDeDatos) {
     miNodoBody.appendChild(miNodoImg);
     miNodoBody.appendChild(miNodoH);
     miNodoBody.appendChild(miNodoStock);
+    miNodoBody.appendChild(miNodoUl);
+
     miNodoH.appendChild(miNodoPrecio);
     miNodoBody.appendChild(miBtn);
     // miNodoTitle.appendChild(miNodoTitle);

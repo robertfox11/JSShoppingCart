@@ -1,10 +1,11 @@
 var baseDeDatos = [{
-        // id: 1,
+        id: 1,
         marca: 'Timberland',
         nombre: 'Casual Marron',
         img: 'assets/img/zapatos/zapacasualTimberland.png',
         precio: 500,
-        stock: 2
+        stock: 2,
+
 
     },
     {
