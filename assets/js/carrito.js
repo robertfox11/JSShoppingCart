@@ -11,28 +11,33 @@ class Cart {
         // creamos otro metodo para leer los datos del producto
     readDataProducts(product) {
             const infoProduct = {
-                    imagen: product.querySelector('img').src,
-                    marca: product.querySelector('h4').textContent,
-                    precio: product.querySelector('.precio span').textContent,
-                    stock: product.querySelector('.stock').textContent,
-                    id: product.querySelector('a').getAttribute('data-id'),
-                    cantidad: 1
+                imagen: product.querySelector('img').src,
+                marca: product.querySelector('h4').textContent,
+                precio: product.querySelector('.precio span').textContent,
+                stock: product.querySelector('.stock').textContent,
+                id: product.querySelector('a').getAttribute('data-id')
+            }
+            let productsLS;
+            productsLS = this.getProductLocalStorage();
+            productsLS.forEach(function(productLS) {
+                if (productLS.id === infoProduct.id) {
+                    productsLS = productLS.id;
                 }
-                // let productoLS;
-                // productoLS = this.obtenerDatosLocalStorage();
-                // productoLS.forEach(function(elemento) {
-                //     if (elemento.id === infoProducto.id) {
-                //         elemento == productoLS.id;
-                //     }
-                // });
-                // insertamos el valor en el carrito
-                // if (productoLS = infoProducto.id) {
-                //     console.log("producto Ya agregado");
-                // } else {
-                //     this.insert_car(infoProducto);
-                // }
-                // console.log(infoProducto);
-            this.insert_car(infoProduct);
+            });
+
+            if (productsLS === infoProduct.id) {
+                Swal.fire({
+                    type: 'info',
+                    title: 'Oops...',
+                    text: 'El producto ya está agregado',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+            } else {
+                this.insert_car(infoProduct);
+            }
+            // console.log(infoProducto);
+
         }
         //creamos otro metodo para insetar cart
     insert_car(product) {
@@ -46,7 +51,7 @@ class Cart {
             <td>${product.precio}</td>
             <td>${product.stock}</td>
             <td>
-                <a href = "#"  class= "borrar_producto btn btn-danger" data-id="${product.id}">x</a>
+                <a href = "#"  class= "borrar_producto btn btn-danger"   data-id="${product.id}">x</a>
             </td>
             `;
             list_products.appendChild(row);
@@ -64,10 +69,10 @@ class Cart {
             product = e.target.parentElement.parentElement;
             productoId = product.querySelector('a').getAttribute('data-id');
             // var _productoId = JSON.stringify(productoID)
-            localStorage.removeItem(productoId);
-            console.log(localStorage + "articulo elimando");
+            // localStorage.removeItem(productoId);
+            // console.log(localStorage + "articulo elimando" + productoId);
         }
-        this.removeProductLocalStorage(product);
+        this.removeProductLocalStorage(productoId);
     }
 
     empty_Cart(e) {
@@ -86,7 +91,7 @@ class Cart {
             products.push(product);
 
             localStorage.setItem('products', JSON.stringify(products));
-            console.log(products)
+            // console.log(products)
 
         }
         //     //     //obtenemos los datos localStorage
@@ -103,56 +108,47 @@ class Cart {
             return productLS1;
         }
         //Eliminar producto LocalStorage
-    removeProductLocalStorage(productId) {
-            let productsLS2;
-            productsLS2 = this.getProductLocalStorage();
+    removeProductLocalStorage(productoID) {
+        let productsLS2;
+        productsLS2 = this.getProductLocalStorage();
 
-            productsLS2.forEach(function(productLS, index) {
-                // console.log(array);
-                if (productLS === productId) {
-                    productLS.splice(index, 1);
-                    // = JSON.parse(localStorage.removeItem(productsLS2));
-                    // console.log(productosLS);
-                    // localStorage.removeItem(JSON.stringify(productoLS.id));
-                    // console.log(productoLS.id);
-                }
-            });
+        productsLS2.forEach(function(productoLS, index) {
+            if (productoLS.id === productoID) {
+                productsLS2.splice(index, 1);
+            }
+        });
+        //actualizamos localstorge
+        localStorage.setItem('products', JSON.stringify(productsLS2));
+    }
 
-            //actualizamos localstorge
-            localStorage.setItem('products', JSON.stringify(productsLS2));
+    readLocalStorage() {
+        let productoLS;
+        productoLS = this.getProductLocalStorage();
+        productoLS.forEach(function(product) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>
+                <img src="${product.imagen}" width = 100>
+            </td>
+            <td>${product.marca}</td>
+            <td>${product.precio}</td>
+            <td>${product.stock}</td>
+            <td>
+                <a href = "#"  class= "borrar_producto btn btn-danger" data-id="${product.id}">x</a>
+            </td>
+            `;
+            list_products.appendChild(row);
+        });
+    }
+    vaciarLocalStorage() {
+        localStorage.clear();
+    }
+    processOrder(e) {
+        e.preventDefault();
+        if (this.getProductLocalStorage().length === 0) {
+            alert("no hay productos en el carrito  agrega algun producto");
+        } else {
+            location.href = "buy.html";
         }
-        // // leerLocalStorage() {
-        // //     let productoLS;
-        // //     productoLS = this.obtenerDatosLocalStorage();
-        // //     productoLS.forEach(function(producto) {
-        // //         const row = document.createElement('tr');
-        // //         row.innerHTML = `
-        // //     <td>
-        // //         <img src="${producto.imagen}" width = 100>
-        // //     </td>
-        // //     <td>${producto.marca}</td>
-        // //     <td>${producto.precio}</td>
-        // //     <td>${producto.stock}</td>
-        // //     <td>
-        // //         <a href = "#"  class= "borrar_producto btn btn-danger" data-id="${producto.id}">x</a>
-        // //     </td>
-        // //     `;
-        // //         list_products.appendChild(row);
-        // //     });
-        // // }
-        // // procesarPedido(e) {
-        // //     e.preventDefault();
-        // //     if (this.obtenerDatosLocalStorage().length === 0) {
-        // //         alert("no hay productos carrito vacio agrega algun producto");
-        // //     } else {
-        // //         location.href = "buy.html";
-        // //     }
-        // // }
-
-    // // for (let producto in productoLS) {
-    // //     console.log(productoLS[producto]);
-    // //     if (productoLS[producto] === productoID) {
-    // //         localStorage.removeItem(productoLS[producto]);
-    // //     }
-    // // }
+    }
 }

@@ -4,7 +4,9 @@ const _car_little = document.getElementById('car_little');
 const products = document.getElementById('list-products');
 const list_products = document.querySelector('#list-car tbody');
 const emptyCarBtn = document.getElementById('emptyCar');
-const orderBtn = document.getElementById('procesar_pedido');
+const orderBtn = document.getElementById('processOrder');
+
+
 
 cargarEventos();
 
@@ -21,8 +23,9 @@ function cargarEventos() {
         car.empty_Cart(e)
     });
 
-    // document.addEventListener('DOMContentLoaded', car.leerLocalStorage());
+    document.addEventListener('DOMContentLoaded', car.readLocalStorage());
 
-    // orderBtn.addEventListener('click', (e) => car.procesarPedido());
-
+    orderBtn.addEventListener('click', (e) => {
+        car.processOrder(e)
+    });
 }
