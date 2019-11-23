@@ -1,27 +1,28 @@
 //instanciamos una clase
-const carro = new Cart();
-const carrito = document.getElementById('carrito');
-var productos = document.getElementById('list-products');
-const lista_productos = document.querySelector('#lista-carrito tbody');
-const vaciar_carritoBtn = document.getElementById('vaciar_carrito');
+const car = new Cart();
+const _car_little = document.getElementById('car_little');
+const products = document.getElementById('list-products');
+const list_products = document.querySelector('#list-car tbody');
+const emptyCarBtn = document.getElementById('emptyCar');
 const orderBtn = document.getElementById('procesar_pedido');
 
 cargarEventos();
 
 function cargarEventos() {
-    productos.addEventListener('click', (e) => {
-        carro.tobuyProducts(e)
+    products.addEventListener('click', (e) => {
+        car.tobuyProducts(e)
 
     });
-    carrito.addEventListener('click', (e) => {
-        carro.eliminarProducto(e)
+
+    _car_little.addEventListener('click', (e) => {
+        car.removeProduct(e);
     });
-    vaciar_carritoBtn.addEventListener('click', (e) => {
-        carro.vaciarCarrito(e)
+    emptyCarBtn.addEventListener('click', (e) => {
+        car.empty_Cart(e)
     });
 
-    // document.addEventListener('DOMContentLoaded', carro.leerLocalStorage());
+    // document.addEventListener('DOMContentLoaded', car.leerLocalStorage());
 
-    // orderBtn.addEventListener('click', (e) => carro.procesarPedido());
+    // orderBtn.addEventListener('click', (e) => car.procesarPedido());
 
 }

@@ -29,12 +29,6 @@ for (datos of baseDeDatos) {
     miNodoStock.classList.add('card-title', 'mx-auto', 'stock');
     miNodoStock.textContent = datos.stock + " uni ";
 
-    // let miNodoUni = document.createElement('span');
-    // miNodoUni.classList.add('card-title', 'mx-auto', 'ids');
-    // miNodoUni.textContent = " id " + datos.id;
-    // miNodoUni.setAttribute('id', datos.id);
-
-
     let miNodoH = document.createElement('h1');
     miNodoH.classList.add('precio');
     miNodoH.textContent = "S/. ";
@@ -43,7 +37,7 @@ for (datos of baseDeDatos) {
     miNodoPrecio.textContent = datos.precio + '€';
 
     let miBtn = document.createElement('a');
-    miBtn.classList.add('btn', 'btn-primary', 'agregar_carrito')
+    miBtn.classList.add('btn', 'btn-primary', 'add_cart')
     miBtn.textContent = 'Comprar';
     miBtn.setAttribute('data-id', datos.id);
 
