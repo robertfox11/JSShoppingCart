@@ -26,13 +26,7 @@ class Cart {
             });
 
             if (productsLS === infoProduct.id) {
-                Swal.fire({
-                    type: 'info',
-                    title: 'Oops...',
-                    text: 'El producto ya está agregado',
-                    showConfirmButton: false,
-                    timer: 1000
-                })
+                alert("El producto ya esta agregado")
             } else {
                 this.insert_car(infoProduct);
             }
