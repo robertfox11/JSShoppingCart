@@ -27,14 +27,14 @@ for (datos of baseDeDatos) {
 
     let miNodoStock = document.createElement('span');
     miNodoStock.classList.add('card-title', 'mx-auto', 'stock');
-    miNodoStock.textContent = datos.stock + " uni ";
+    miNodoStock.textContent = datos.stock;
 
     let miNodoH = document.createElement('h1');
     miNodoH.classList.add('precio');
-    miNodoH.textContent = "S/. ";
+    miNodoH.textContent = "€/. ";
 
     let miNodoPrecio = document.createElement('span');
-    miNodoPrecio.textContent = datos.precio + '€';
+    miNodoPrecio.textContent = datos.precio;
 
     let miBtn = document.createElement('a');
     miBtn.classList.add('btn', 'btn-primary', 'add_cart')

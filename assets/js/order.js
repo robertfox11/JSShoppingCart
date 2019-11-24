@@ -8,6 +8,7 @@ const orderBtn = document.getElementById('processOrder');
 
 
 
+
 cargarEventos();
 
 function cargarEventos() {
@@ -28,4 +29,6 @@ function cargarEventos() {
     orderBtn.addEventListener('click', (e) => {
         car.processOrder(e)
     });
+
+
 }

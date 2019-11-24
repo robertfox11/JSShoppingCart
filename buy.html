@@ -1,19 +1,16 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilo.css">
-    <script src="js/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="assets/css/styles.css">
 
-    <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <!-- <link rel="stylesheet" href="css/sweetalert2.min.css"> -->
 
-    <title>Carrito Compras en JavaScript</title>
-
+    <title>Carrito Compras en Zapatos JS y LocalStorage</title>
 </head>
 
 <body>
@@ -21,7 +18,7 @@
         <div class="container">
             <div class="row justify-content-between mb-5">
                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                    <a class="navbar-brand" href="index.html">BODEGUITA FLORES EIRL</a>
+                    <a class="navbar-brand" href="index.html">ZapatosShooping</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -51,8 +48,8 @@
                             </div>
                         </div>
 
-                        <div id="carrito" class="table-responsive">
-                            <table class="table" id="lista-compra">
+                        <div id="carBuy" class="table-responsive">
+                            <table class="table" id="list_buy">
                                 <thead>
                                     <tr>
                                         <th scope="col">Imagen</th>
@@ -75,9 +72,9 @@
                                     <!-- <th scope="col"></th> -->
                                 </tr>
                                 <tr>
-                                    <th colspan="4" scope="col" class="text-right">IGV :</th>
+                                    <th colspan="4" scope="col" class="text-right">iva :</th>
                                     <th scope="col">
-                                        <p id="igv"></p>
+                                        <p id="iva"></p>
                                     </th>
                                     <!-- <th scope="col"></th> -->
                                 </tr>
@@ -93,7 +90,7 @@
                         </div>
 
                         <div class="row justify-content-center" id="loaders">
-                            <img id="cargando" src="img/cargando.gif" width="220">
+                            <img id="cargando" src="assets/img/compra/cargando.gif" width="220">
                         </div>
 
                         <div class="row justify-content-between">
@@ -101,7 +98,7 @@
                                 <a href="index.html" class="btn btn-info btn-block">Seguir comprando</a>
                             </div>
                             <div class="col-xs-12 col-md-4">
-                                <a href="" class="btn btn-success btn-block" id="procesar-compra">Realizar compra</a>
+                                <a href="" class="btn btn-success btn-block" id="buyProcess">Realizar compra</a>
                             </div>
                         </div>
                     </form>
@@ -114,18 +111,13 @@
 
         </div>
     </main>
-
-
-
-
-
     </div>
 
-    <!-- <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/sweetalert2.min.js"></script> -->
+
     <script src="assets/js/carrito.js"></script>
-    <script src="assets/js/bd.js"></script>
+    <script src="assets/js/comprar/process.js"></script>
+
+
 
 </body>
 

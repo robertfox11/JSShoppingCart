@@ -14,7 +14,7 @@ var baseDeDatos = [{
         nombre: 'Casual blue',
         img: 'assets/img/zapatos/zapacasualTimberland1.png',
         precio: 2000,
-        stock: 10
+        stock: 5
     },
     {
         id: 3,
@@ -22,7 +22,7 @@ var baseDeDatos = [{
         nombre: 'Casual Marron',
         img: 'assets/img/zapatos/zapacasualTimberland.png',
         precio: 1000,
-        stock: 10
+        stock: 4
     },
     {
         id: 4,

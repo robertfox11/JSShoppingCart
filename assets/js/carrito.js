@@ -15,7 +15,8 @@ class Cart {
                 marca: product.querySelector('h4').textContent,
                 precio: product.querySelector('.precio span').textContent,
                 stock: product.querySelector('.stock').textContent,
-                id: product.querySelector('a').getAttribute('data-id')
+                id: product.querySelector('a').getAttribute('data-id'),
+                cantidad: 1
             }
             let productsLS;
             productsLS = this.getProductLocalStorage();
@@ -43,7 +44,7 @@ class Cart {
             </td>
             <td>${product.marca}</td>
             <td>${product.precio}</td>
-            <td>${product.stock}</td>
+            <td>${product.cantidad}</td>
             <td>
                 <a href = "#"  class= "borrar_producto btn btn-danger"   data-id="${product.id}">x</a>
             </td>
@@ -67,6 +68,7 @@ class Cart {
             // console.log(localStorage + "articulo elimando" + productoId);
         }
         this.removeProductLocalStorage(productoId);
+        this.calculateTotal();
     }
 
     empty_Cart(e) {
@@ -126,12 +128,34 @@ class Cart {
             </td>
             <td>${product.marca}</td>
             <td>${product.precio}</td>
-            <td>${product.stock}</td>
+            <td>${product.cantidad}</td>
             <td>
                 <a href = "#"  class= "borrar_producto btn btn-danger" data-id="${product.id}">x</a>
             </td>
             `;
             list_products.appendChild(row);
+        });
+    }
+    readLocalStoragebuy() {
+        let productoLS;
+        productoLS = this.getProductLocalStorage();
+        productoLS.forEach(function(product) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <img src="${product.imagen}" width=100>
+                </td>
+                <td>${product.marca}</td>
+                <td>${product.precio}</td>
+                <td>
+                    <input type="number" class="form-control cantidad" min="1" value=${product.cantidad}>
+                </td>
+                <td id='subtotales'>${product.precio}</td>
+                <td>
+                <a href = "#"  class= "borrar_producto btn btn-danger" data-id="${product.id}">x</a>
+                </td>
+            `;
+            list_Buy.appendChild(row);
         });
     }
     vaciarLocalStorage() {
@@ -143,6 +167,53 @@ class Cart {
             alert("no hay productos en el carrito  agrega algun producto");
         } else {
             location.href = "buy.html";
+        }
+    }
+    calculateTotal() {
+        let productsLS;
+        let total = 0,
+            iva = 0,
+            subtotal = 0;
+        productsLS = this.getProductLocalStorage();
+        for (let i = 0; i < productsLS.length; i++) {
+            let element = Number(productsLS[i].precio * productsLS[i].cantidad);
+            total = total + element;
+
+        }
+
+        iva = parseFloat(total * 0.18).toFixed(2);
+        subtotal = parseFloat(total - iva).toFixed(2);
+
+        document.getElementById('subtotal').innerHTML = "€/. " + subtotal;
+        document.getElementById('iva').innerHTML = "€/. " + iva;
+        document.getElementById('total').innerHTML = "€/. " + total.toFixed(2);
+    }
+    processBuy(e) {
+        e.preventDefault();
+        if (buy.getProductLocalStorage().length === 0) {
+            alert("no hay producto seleccionado").then(function() {
+                window.location = "index.html";
+            })
+        } else if (cliente.value === '' || correo.value === '') {
+            alert("ingrese todos los campos requeridos")
+        } else {
+            const loadGif = document.querySelector('#cargando');
+            loadGif.style.display = 'block';
+
+            const send = document.createElement('img');
+            send.src = 'compra/mail.gif';
+            send.style.display = 'block';
+            send.width = '150';
+
+            setTimeout(() => {
+                loadGif.style.display = 'none';
+                document.querySelector('#loaders').appendChild(send);
+                setTimeout(() => {
+                    send.remove();
+                    buy.vaciarLocalStorage();
+                    window.location = "index.html";
+                }, 2000);
+            }, 3000);
         }
     }
 }
