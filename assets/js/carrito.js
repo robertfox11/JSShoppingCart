@@ -105,24 +105,24 @@ class Cart {
         }
         //Eliminar producto LocalStorage
     removeProductLocalStorage(productoID) {
-        let productsLS2;
-        productsLS2 = this.getProductLocalStorage();
+            let productsLS2;
+            productsLS2 = this.getProductLocalStorage();
 
-        productsLS2.forEach(function(productoLS, index) {
-            if (productoLS.id === productoID) {
-                productsLS2.splice(index, 1);
-            }
-        });
-        //actualizamos localstorge
-        localStorage.setItem('products', JSON.stringify(productsLS2));
-    }
-
+            productsLS2.forEach(function(productoLS, index) {
+                if (productoLS.id === productoID) {
+                    productsLS2.splice(index, 1);
+                }
+            });
+            //actualizamos localstorge
+            localStorage.setItem('products', JSON.stringify(productsLS2));
+        }
+        //leer como quedo local storage en la ultima visita
     readLocalStorage() {
-        let productoLS;
-        productoLS = this.getProductLocalStorage();
-        productoLS.forEach(function(product) {
-            const row = document.createElement('tr');
-            row.innerHTML = `
+            let productoLS;
+            productoLS = this.getProductLocalStorage();
+            productoLS.forEach(function(product) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
             <td>
                 <img src="${product.imagen}" width = 100>
             </td>
@@ -133,9 +133,10 @@ class Cart {
                 <a href = "#"  class= "borrar_producto btn btn-danger" data-id="${product.id}">x</a>
             </td>
             `;
-            list_products.appendChild(row);
-        });
-    }
+                list_products.appendChild(row);
+            });
+        }
+        //leer local storage comprando
     readLocalStoragebuy() {
         let productoLS;
         productoLS = this.getProductLocalStorage();
@@ -148,9 +149,9 @@ class Cart {
                 <td>${product.marca}</td>
                 <td>${product.precio}</td>
                 <td>
-                    <input type="number" class="form-control cantidad" min="1" value=${product.cantidad}>
+                    <input type="number" class="form-control cantidad" min="1" name="${product.id}" value=${product.cantidad}>
                 </td>
-                <td id='subtotales'>${product.precio}</td>
+                <td id='subtotales'></td>
                 <td>
                 <a href = "#"  class= "borrar_producto btn btn-danger" data-id="${product.id}">x</a>
                 </td>
@@ -159,35 +160,38 @@ class Cart {
         });
     }
     vaciarLocalStorage() {
-        localStorage.clear();
-    }
+            localStorage.clear();
+        }
+        //procesar agregando producto
     processOrder(e) {
-        e.preventDefault();
-        if (this.getProductLocalStorage().length === 0) {
-            alert("no hay productos en el carrito  agrega algun producto");
-        } else {
-            location.href = "buy.html";
+            e.preventDefault();
+            if (this.getProductLocalStorage().length === 0) {
+                alert("no hay productos en el carrito  agrega algun producto");
+            } else {
+                location.href = "buy.html";
+            }
         }
-    }
+        //calculamos el total del compra
     calculateTotal() {
-        let productsLS;
-        let total = 0,
-            iva = 0,
-            subtotal = 0;
-        productsLS = this.getProductLocalStorage();
-        for (let i = 0; i < productsLS.length; i++) {
-            let element = Number(productsLS[i].precio * productsLS[i].cantidad);
-            total = total + element;
+            let productsLS;
+            let total = 0,
+                iva = 0,
+                subtotal = 0;
+            productsLS = this.getProductLocalStorage();
+            for (let i = 0; i < productsLS.length; i++) {
+                let element = Number(productsLS[i].precio * productsLS[i].cantidad);
+                total = total + element;
 
+            }
+
+            iva = parseFloat(total * 0.21).toFixed(2);
+            subtotal = parseFloat(total - iva).toFixed(2);
+
+            document.getElementById('subtotal').innerHTML = "€/. " + subtotal;
+            document.getElementById('iva').innerHTML = "€/. " + iva;
+            document.getElementById('total').innerHTML = "€/. " + total.toFixed(2);
         }
-
-        iva = parseFloat(total * 0.18).toFixed(2);
-        subtotal = parseFloat(total - iva).toFixed(2);
-
-        document.getElementById('subtotal').innerHTML = "€/. " + subtotal;
-        document.getElementById('iva').innerHTML = "€/. " + iva;
-        document.getElementById('total').innerHTML = "€/. " + total.toFixed(2);
-    }
+        //preocesar compra completada 
     processBuy(e) {
         e.preventDefault();
         if (buy.getProductLocalStorage().length === 0) {
@@ -215,5 +219,24 @@ class Cart {
                 }, 2000);
             }, 3000);
         }
+    }
+    calculateTotalR() {
+        let productsLS;
+        let total = 0,
+            iva = 0,
+            subtotal = 0;
+        productsLS = this.getProductLocalStorage();
+        for (let i = 0; i < productsLS.length; i++) {
+            let element = Number(productsLS[i].precio * productsLS[i].cantidad);
+            total += element;
+            console.log(total)
+
+        }
+
+        iva = parseFloat(total * 0.21).toFixed(2);
+        subtotal = parseFloat(total - iva).toFixed(2);
+
+        document.getElementById('subtotales').innerHTML = "€/. " + total;
+
     }
 }
